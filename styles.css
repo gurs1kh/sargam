@@ -1,5 +1,11 @@
+@font-face {
+  font-family: "Mukta Mahee Sangeet";
+  src: url("assets/MuktaMaheeSangeet-Regular.ttf");
+}
+
 html {
   text-align: center;
+  font-family: "Mukta Mahee Sangeet", serif;
   font-size: 40vh;
 }
 
