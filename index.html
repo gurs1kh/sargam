@@ -14,8 +14,8 @@
       const sargam = "ਸ ਰ ਗ ਮ ਪ ਧ ਨ ਸ̇".split(' ');
       const App = () => {
         const [swar, setSwar] = React.useState('ਸ')
-        const [includeAllOctaves, setIncludeAllOctaves] = React.useState(false)
-        const [includeAccidentals, setIncludeAccidentals] = React.useState(false)
+        const [includeAllOctaves, setIncludeAllOctaves] = useLocalStorage('includeAllOctaves', false)
+        const [includeAccidentals, setIncludeAccidentals] = useLocalStorage('includeAccidentals', false)
 
         const onClick = () => {
           const newSwar = sargam.sort(() => Math.random() - 0.5)[0]
@@ -50,6 +50,29 @@
           </div>
         );
       }
+
+      // from https://designcode.io/react-hooks-handbook-uselocalstorage-hook
+      const useLocalStorage = (key, defaultValue) => {
+        const [value, setValue] = React.useState(() => {
+          let currentValue;
+
+          try {
+            currentValue = JSON.parse(
+              localStorage.getItem(key) || String(defaultValue)
+            );
+          } catch (error) {
+            currentValue = defaultValue;
+          }
+
+          return currentValue;
+        });
+
+        React.useEffect(() => {
+          localStorage.setItem(key, JSON.stringify(value));
+        }, [value, key]);
+
+        return [value, setValue];
+      };
 
       ReactDOM.render(
           <App /> ,
