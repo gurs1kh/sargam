@@ -7,6 +7,8 @@ html {
   text-align: center;
   font-family: "Mukta Mahee Sangeet", serif;
   font-size: 40vh;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 #root {
