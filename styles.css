@@ -1,0 +1,19 @@
+html {
+  text-align: center;
+  font-size: 40vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background-color: #EEEEEE;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 90%;
+  cursor: pointer;
+}
