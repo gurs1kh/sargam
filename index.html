@@ -14,6 +14,8 @@
       const sargam = "ਸ ਰ ਗ ਮ ਪ ਧ ਨ ਸ̇".split(' ');
       const App = () => {
         const [swar, setSwar] = React.useState('ਸ')
+        const [includeAllOctaves, setIncludeAllOctaves] = React.useState(false)
+        const [includeAccidentals, setIncludeAccidentals] = React.useState(false)
 
         const onClick = () => {
           const newSwar = sargam.sort(() => Math.random() - 0.5)[0]
@@ -26,6 +28,24 @@
               <span className="swar-text">
                 {swar}
               </span>
+            </div>
+            <div className="settings">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={includeAllOctaves}
+                  onChange={() => setIncludeAllOctaves(!includeAllOctaves)}
+                />
+                Include all octaves
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={includeAccidentals}
+                  onChange={() => setIncludeAccidentals(!includeAccidentals)}
+                />
+                Include komal/teevra notes
+              </label>
             </div>
           </div>
         );
