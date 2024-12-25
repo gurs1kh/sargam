@@ -21,8 +21,12 @@
         }
 
         return (
-          <div className="container" onClick={onClick}>
-            {swar}
+          <div className="container">
+            <div className="swar" onClick={onClick}>
+              <span className="swar-text">
+                {swar}
+              </span>
+            </div>
           </div>
         );
       }
