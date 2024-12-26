@@ -11,14 +11,32 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-      const sargam = "ਸ ਰ ਗ ਮ ਪ ਧ ਨ ਸ̇".split(' ');
+      const sargam = `
+      ਸ̣ ਰ॒̣ ਰ̣ ਗ॒̣ ਗ̣ ਮ̣ ਮ॑​̣ ਪ̣ ਧ॒̣ ਧ̣ ਨ॒̣ ਨ̣
+      ਸ ਰ॒ ਰ ਗ॒ ਗ ਮ ਮ॑ ਪ ਧ॒ ਧ ਨ॒ ਨ ਸ̇
+      ਰ॒̇ ਰ̇ ਗ॒̇ ਗ̇ ਮ̇ ਮ॑̇ ਪ̇ ਧ॒̇ ਧ̇ ਨ॒̇ ਨ̇ ਸ̈
+      `.trim().split(/[\s\n]+/g)
+
+      const octaveMarkRegex = new RegExp(' ̣ ̇ ̈'.trim().split(' ').join('|'))
+      const accidentalMarkRegex = new RegExp(' ॒ ॑'.trim().split(' ').join('|'))
+
       const App = () => {
         const [swar, setSwar] = React.useState('ਸ')
         const [includeAllOctaves, setIncludeAllOctaves] = useLocalStorage('includeAllOctaves', false)
         const [includeAccidentals, setIncludeAccidentals] = useLocalStorage('includeAccidentals', false)
 
         const onClick = () => {
-          const newSwar = sargam.sort(() => Math.random() - 0.5)[0]
+          const allowedSargam = sargam.filter((swar) => {
+            if (!includeAllOctaves && swar !== "ਸ̇" && swar.match(octaveMarkRegex)) {
+              return false;
+            }
+            if (!includeAccidentals && swar.match(accidentalMarkRegex)) {
+              return false;
+            }
+            return true;
+          });
+
+          const newSwar = allowedSargam.sort(() => Math.random() - 0.5)[0]
           setSwar(newSwar)
         }
 
