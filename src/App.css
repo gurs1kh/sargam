@@ -1,8 +1,3 @@
-@font-face {
-  font-family: "Mukta Mahee Sangeet";
-  src: url("assets/MuktaMaheeSangeet-Regular.ttf");
-}
-
 body {
   -webkit-user-select: none;
   user-select: none;
