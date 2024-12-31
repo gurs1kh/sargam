@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocalStorage } from "./utils/useLocalStorage";
+import { ToggleButton } from "@mui/material";
 import { ToggleGroup } from "./components/ToggleGroup";
 import './App.css';
 
@@ -43,14 +44,13 @@ export const App = () => {
           selected={noteRange}
           onChange={(value) => setNoteRange(value)}
         />
-        <label>
-          <input
-            type="checkbox"
-            checked={includeAccidentals}
-            onChange={() => setIncludeAccidentals(!includeAccidentals)}
-          />
-          Include komal/teevra notes
-        </label>
+        <ToggleButton
+          value=""
+          selected={includeAccidentals}
+          onChange={() => setIncludeAccidentals(!includeAccidentals)}
+        >
+          <span className="toggle-button-text">ਰ॒ ਗ॒ ਮ॑ ਧ॒ ਨ॒</span>
+        </ToggleButton>
       </div>
     </div>
   );
