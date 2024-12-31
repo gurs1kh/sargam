@@ -4,6 +4,10 @@ body {
   font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
+:root {
+  --gurmukhi-font-family: "Mukta Mahee Sangeet", serif;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -24,7 +28,7 @@ body {
 }
 
 .swar-text {
-  font-family: "Mukta Mahee Sangeet", serif;
+  font-family: var(--gurmukhi-font-family);
   font-size: 55vh;
 }
 
@@ -52,4 +56,10 @@ body {
     transform: scale(4);
     margin-right: 3em;
   }
+}
+
+.toggle-button-text {
+  font-family: var(--gurmukhi-font-family);
+  font-size: 4vh;
+  padding: 0 1em;
 }
