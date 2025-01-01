@@ -25,11 +25,15 @@ body {
   border-radius: 5cqmax;
   background-color: #EEEEEE;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .current-note-text {
   font-family: var(--gurmukhi-font-family);
   font-size: min(50vh, 100vw);
+  width: 100%;
+  text-align: center;
+  background-color: #EEEEEE;
 }
 
 .current-note-text-length-2 {
