@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.62c74678.css",
-    "main.js": "/static/js/main.8c68e215.js",
-    "index.html": "/index.html",
-    "main.62c74678.css.map": "/static/css/main.62c74678.css.map",
-    "main.8c68e215.js.map": "/static/js/main.8c68e215.js.map"
+    "main.css": "/sargam/static/css/main.eebbcee2.css",
+    "main.js": "/sargam/static/js/main.8c68e215.js",
+    "index.html": "/sargam/index.html",
+    "main.eebbcee2.css.map": "/sargam/static/css/main.eebbcee2.css.map",
+    "main.8c68e215.js.map": "/sargam/static/js/main.8c68e215.js.map"
   },
   "entrypoints": [
-    "static/css/main.62c74678.css",
+    "static/css/main.eebbcee2.css",
     "static/js/main.8c68e215.js"
   ]
 }
