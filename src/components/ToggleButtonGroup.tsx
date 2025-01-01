@@ -1,9 +1,9 @@
 import './ToggleButtonGroup.css'
 
 interface ToggleButtonGroupProps {
-  options: { value: string, text: string }[];
-  selected: string;
-  onChange: (value: string) => void;
+  options: { value: string; text: string }[]
+  selected: string
+  onChange: (value: string) => void
 }
 
 export const ToggleButtonGroup = ({ selected, options, onChange }: ToggleButtonGroupProps) => {
@@ -19,14 +19,14 @@ export const ToggleButtonGroup = ({ selected, options, onChange }: ToggleButtonG
         />
       ))}
     </div>
-  );
+  )
 }
 
 interface ToggleButtonProps {
-  text: string;
-  onClick: () => void;
-  selected?: boolean;
-  value?: string;
+  text: string
+  onClick: () => void
+  selected?: boolean
+  value?: string
 }
 
 export const ToggleButton = ({ text, onClick, selected, value }: ToggleButtonProps) => {
@@ -36,12 +36,11 @@ export const ToggleButton = ({ text, onClick, selected, value }: ToggleButtonPro
       value={value}
       onClick={onClick}
       onTouchEnd={(e) => {
-        e.preventDefault();
-        onClick();
+        e.preventDefault()
+        onClick()
       }}
     >
       <span className="toggle-button-text">{text}</span>
     </button>
-  );
+  )
 }
-

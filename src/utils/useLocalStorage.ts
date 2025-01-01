@@ -1,24 +1,22 @@
 // modified from https://designcode.io/react-hooks-handbook-uselocalstorage-hook
-import { useState, useEffect } from "react";
+import { useEffect, useState } from 'react'
 
 export const useLocalStorage = <T>(key: string, defaultValue: T) => {
   const [value, setValue] = useState(() => {
-    let currentValue;
+    let currentValue
 
     try {
-      currentValue = JSON.parse(
-        localStorage.getItem(key) || String(defaultValue)
-      );
+      currentValue = JSON.parse(localStorage.getItem(key) || String(defaultValue))
     } catch (error) {
-      currentValue = defaultValue;
+      currentValue = defaultValue
     }
 
-    return currentValue;
-  });
+    return currentValue
+  })
 
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
-  }, [value, key]);
+    localStorage.setItem(key, JSON.stringify(value))
+  }, [value, key])
 
-  return [value, setValue];
-};
+  return [value, setValue]
+}
