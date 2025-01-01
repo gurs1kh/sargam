@@ -34,8 +34,18 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "gh-pages": "^6.2.0",
+    "husky": "4.3.8",
+    "lint-staged": "^13.2.0",
     "prettier": "^2.8.4",
     "typescript": "^4.4.2"
+  },
+  "lint-staged": {
+    "**/*.ts(x)?": "yarn lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "browserslist": {
     "production": [
