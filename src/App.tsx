@@ -12,7 +12,7 @@ const accidentalMarkRegex = new RegExp(' ॒ ॑'.trim().split(' ').join('|'))
 const rangeOptions = ['ਸ↔ਸ̇', 'ਪ̣↔ਮ̇', 'ਸ̣↔ਸ̈']
 
 export const App = () => {
-  const [swar, setSwar] = useState('ਸ')
+  const [currentSwar, setCurrentSwar] = useState('ਸ')
   const [noteRange, setNoteRange] = useLocalStorage('noteRange', rangeOptions[0])
   const [includeAccidentals, setIncludeAccidentals] = useLocalStorage('includeAccidentals', false)
 
@@ -24,17 +24,18 @@ export const App = () => {
 
     const allowedSargam = sargamInRange
       .split(' ')
-      .filter((swar) => includeAccidentals || !swar.match(accidentalMarkRegex));
+      .filter((swar) => includeAccidentals || !swar.match(accidentalMarkRegex))
+      .filter((swar) => swar !== currentSwar);
 
     const newSwar = allowedSargam.sort(() => Math.random() - 0.5)[0]
-    setSwar(newSwar)
+    setCurrentSwar(newSwar)
   }
 
   return (
     <div className="container">
       <div className="swar" onClick={onClick}>
         <span className="swar-text">
-          {swar}
+          {currentSwar}
         </span>
       </div>
       <div className="settings">
