@@ -16,7 +16,7 @@ body {
   padding: 1%;
 }
 
-.swar {
+.current-note {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +27,7 @@ body {
   cursor: pointer;
 }
 
-.swar-text {
+.current-note-text {
   font-family: var(--gurmukhi-font-family);
   font-size: 55vh;
 }
