@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import './App.css'
-import { ToggleButton, ToggleButtonGroup } from './components/ToggleButtonGroup'
+import { useMemo, useState } from 'react'
 import { useLocalStorage } from './utils/useLocalStorage'
+import { ToggleButtonGroup, ToggleButton } from './components/ToggleButtonGroup'
+import './App.css'
 
 const allNotes = `ਸ̣ ਰ॒̣ ਰ̣ ਗ॒̣ ਗ̣ ਮ̣ ਮ॑​̣ ਪ̣ ਧ॒̣ ਧ̣ ਨ॒̣ ਨ̣
                 ਸ ਰ॒ ਰ ਗ॒ ਗ ਮ ਮ॑ ਪ ਧ॒ ਧ ਨ॒ ਨ ਸ̇
@@ -12,33 +12,50 @@ const allNotes = `ਸ̣ ਰ॒̣ ਰ̣ ਗ॒̣ ਗ̣ ਮ̣ ਮ॑​̣ ਪ̣ �
 
 const accidentalMarkRegex = new RegExp(' ॒ ॑'.trim().split(' ').join('|'))
 const rangeOptions = ['ਸ↔ਸ̇', 'ਪ̣↔ਮ̇', 'ਸ̣↔ਸ̈']
+const patternLengthOptions = [
+  { value: 1, text: 'ਸ' },
+  { value: 2, text: 'ਸ ਰ' },
+  { value: 3, text: 'ਸ ਰ ਗ' },
+  { value: 4, text: 'ਸ ਰ ਗ ਮ' },
+]
 
 export const App = () => {
-  const [currentNote, setCurrentNote] = useState('ਸ')
+  const [currentNotes, setCurrentNotes] = useState('ਸ ਰ ਗ ਮ'.split(' '))
+  const [patternLength, setPatternLength] = useLocalStorage('patternLength', 1)
   const [noteRange, setNoteRange] = useLocalStorage('noteRange', rangeOptions[0])
   const [includeAccidentals, setIncludeAccidentals] = useLocalStorage('includeAccidentals', false)
 
-  const onClick = () => {
+  const filteredNotes = useMemo(() => {
     const [startNote, endNote] = noteRange.split('↔')
-    const notesInRange = allNotes
+
+    return allNotes
       .replace(new RegExp(`^.+?(?=${startNote})`), '')
       .replace(new RegExp(`(?<=${endNote}).+?$`), '')
-
-    const allowedNotes = notesInRange
       .split(' ')
       .filter((note) => includeAccidentals || !note.match(accidentalMarkRegex))
-      .filter((note) => note !== currentNote)
+  }, [noteRange, includeAccidentals])
 
-    const newNote = allowedNotes.sort(() => Math.random() - 0.5)[0]
-    setCurrentNote(newNote)
+  const onClick = () => {
+    const allowedNotes =
+      patternLength < 1 ? filteredNotes : filteredNotes.filter((note) => note !== currentNotes[0])
+
+    const newNotes = allowedNotes.sort(() => Math.random() - 0.5)
+    setCurrentNotes(newNotes)
   }
 
   return (
     <div className="container">
       <div className="current-note" onClick={onClick}>
-        <span className="current-note-text">{currentNote}</span>
+        <span className={`current-note-text current-note-text-length-${patternLength}`}>
+          {currentNotes.slice(0, patternLength).join(' ')}
+        </span>
       </div>
       <div className="settings">
+        <ToggleButtonGroup
+          options={patternLengthOptions}
+          selected={patternLength}
+          onChange={(value) => setPatternLength(value)}
+        />
         <ToggleButtonGroup
           options={rangeOptions.map((value) => ({ value, text: value }))}
           selected={noteRange}

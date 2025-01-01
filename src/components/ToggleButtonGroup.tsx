@@ -1,17 +1,21 @@
 import './ToggleButtonGroup.css'
 
-interface ToggleButtonGroupProps {
-  options: { value: string; text: string }[]
-  selected: string
-  onChange: (value: string) => void
+interface ToggleButtonGroupProps<T> {
+  options: { value: T; text: string }[]
+  selected: T
+  onChange: (value: T) => void
 }
 
-export const ToggleButtonGroup = ({ selected, options, onChange }: ToggleButtonGroupProps) => {
+export const ToggleButtonGroup = <T,>({
+  selected,
+  options,
+  onChange,
+}: ToggleButtonGroupProps<T>) => {
   return (
     <div className="toggle-button-group">
       {options.map(({ value, text }) => (
         <ToggleButton
-          key={value}
+          key={String(value)}
           text={text}
           value={value}
           onClick={() => onChange(value)}
@@ -22,18 +26,18 @@ export const ToggleButtonGroup = ({ selected, options, onChange }: ToggleButtonG
   )
 }
 
-interface ToggleButtonProps {
+interface ToggleButtonProps<T> {
   text: string
   onClick: () => void
   selected?: boolean
-  value?: string
+  value?: T
 }
 
-export const ToggleButton = ({ text, onClick, selected, value }: ToggleButtonProps) => {
+export const ToggleButton = <T,>({ text, onClick, selected, value }: ToggleButtonProps<T>) => {
   return (
     <button
       className={`toggle-button ${selected ? 'toggle-button-selected' : ''}`}
-      value={value}
+      value={String(value)}
       onClick={onClick}
       onTouchEnd={(e) => {
         e.preventDefault()
