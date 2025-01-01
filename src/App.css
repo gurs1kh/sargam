@@ -21,7 +21,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 60vh;
+  height: 55vh;
   border-radius: 5cqmax;
   background-color: #EEEEEE;
   cursor: pointer;
@@ -29,7 +29,19 @@ body {
 
 .current-note-text {
   font-family: var(--gurmukhi-font-family);
-  font-size: 55vh;
+  font-size: min(50vh, 100vw);
+}
+
+.current-note-text-length-2 {
+  font-size: min(50vh, calc(100vw / 2))
+}
+
+.current-note-text-length-3 {
+  font-size: min(50vh, calc(100vw / 3))
+}
+
+.current-note-text-length-4 {
+  font-size: min(50vh, calc(100vw / 4));
 }
 
 .settings {
@@ -43,5 +55,6 @@ body {
 
 .toggle-button-text {
   font-family: var(--gurmukhi-font-family);
-  font-size: 4vh;
+  font-size: min(4vh, 5vw);
+  white-space: nowrap;
 }
