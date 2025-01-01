@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useLocalStorage } from "./utils/useLocalStorage";
-import { ToggleButton } from "@mui/material";
-import { ToggleGroup } from "./components/ToggleGroup";
+import { ToggleButtonGroup, ToggleButton } from "./components/ToggleButtonGroup";
 import './App.css';
 
 const sargam = `ਸ̣ ਰ॒̣ ਰ̣ ਗ॒̣ ਗ̣ ਮ̣ ਮ॑​̣ ਪ̣ ਧ॒̣ ਧ̣ ਨ॒̣ ਨ̣
@@ -39,18 +38,16 @@ export const App = () => {
         </span>
       </div>
       <div className="settings">
-        <ToggleGroup
+        <ToggleButtonGroup
           options={rangeOptions.map((value) => ({ value, text: value }))}
           selected={noteRange}
           onChange={(value) => setNoteRange(value)}
         />
         <ToggleButton
-          value=""
+          text="ਰ॒ ਗ॒ ਮ॑ ਧ॒ ਨ॒"
           selected={includeAccidentals}
-          onChange={() => setIncludeAccidentals(!includeAccidentals)}
-        >
-          <span className="toggle-button-text">ਰ॒ ਗ॒ ਮ॑ ਧ॒ ਨ॒</span>
-        </ToggleButton>
+          onClick={() => setIncludeAccidentals(!includeAccidentals)}
+        />
       </div>
     </div>
   );
