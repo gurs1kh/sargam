@@ -35,6 +35,10 @@ export const ToggleButton = ({ text, onClick, selected, value }: ToggleButtonPro
       className={`toggle-button ${selected ? 'toggle-button-selected' : ''}`}
       value={value}
       onClick={onClick}
+      onTouchEnd={(e) => {
+        e.preventDefault();
+        onClick();
+      }}
     >
       <span className="toggle-button-text">{text}</span>
     </button>
