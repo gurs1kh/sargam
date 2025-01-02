@@ -1,4 +1,4 @@
-import './ToggleButtonGroup.css'
+import './ToggleButtonGroup.scss'
 
 interface ToggleButtonGroupProps<T> {
   options: { value: T; text: string }[]

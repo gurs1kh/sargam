@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useLocalStorage } from './utils/useLocalStorage'
 import { ToggleButtonGroup, ToggleButton } from './components/ToggleButtonGroup'
-import './App.css'
+import './App.scss'
 
 const allNotes = `ਸ̣ ਰ॒̣ ਰ̣ ਗ॒̣ ਗ̣ ਮ̣ ਮ॑​̣ ਪ̣ ਧ॒̣ ਧ̣ ਨ॒̣ ਨ̣
                 ਸ ਰ॒ ਰ ਗ॒ ਗ ਮ ਮ॑ ਪ ਧ॒ ਧ ਨ॒ ਨ ਸ̇
