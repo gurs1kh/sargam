@@ -1,19 +1,26 @@
+:root {
+  --gurmukhi-font-family: "Mukta Mahee Sangeet", serif;
+}
+
 body {
   -webkit-user-select: none;
   user-select: none;
   font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
-:root {
-  --gurmukhi-font-family: "Mukta Mahee Sangeet", serif;
+body, #root {
+  height: 100dvh;
+  margin: 0;
 }
 
 .container {
+  box-sizing: border-box;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 1%;
+  padding: 1vh;
 }
 
 .current-note {
@@ -49,12 +56,12 @@ body {
 }
 
 .settings {
+  box-sizing: border-box;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.5em;
-  padding: 0.5em;
   font-size: 3vh;
-  width: 80vw;
 }
 
 .toggle-button-text {
