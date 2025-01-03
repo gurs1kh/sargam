@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import './ToggleButtonGroup.scss'
 
 interface ToggleButtonGroupProps<T> {
@@ -36,7 +37,7 @@ interface ToggleButtonProps<T> {
 export const ToggleButton = <T,>({ text, onClick, selected, value }: ToggleButtonProps<T>) => {
   return (
     <button
-      className={`toggle-button ${selected ? 'toggle-button--selected' : ''}`}
+      className={classNames(['toggle-button', { 'toggle-button--selected': selected }])}
       value={String(value)}
       onClick={onClick}
       onTouchEnd={(e) => {
