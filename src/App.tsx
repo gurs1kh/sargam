@@ -46,7 +46,7 @@ export const App = () => {
   return (
     <div className="container">
       <div className="current-note" onClick={onClick}>
-        <span className={`current-note-text current-note-text-length-${patternLength}`}>
+        <span className={`current-note-text current-note-text--length-${patternLength}`}>
           {currentNotes.slice(0, patternLength).join(' ')}
         </span>
       </div>
