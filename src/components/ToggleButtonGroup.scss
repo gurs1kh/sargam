@@ -1,6 +1,6 @@
 @mixin toggle-button-border {
-  border: 1px solid #E0E0E0;
-  border-radius: 0.25em;
+  border: 1px solid #CCC;
+  border-radius: 0.5em;
 }
 
 .toggle-button {
@@ -20,11 +20,11 @@
   padding: 0.5em 0;
 
   &:active {
-    background-color: #CCC;
+    background-color: #AAA;
   }
 
   &--selected {
-    background-color: #E0E0E0;
+    background-color: #CCC;
   }
 }
 
