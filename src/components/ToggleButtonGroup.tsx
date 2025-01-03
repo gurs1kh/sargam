@@ -36,7 +36,7 @@ interface ToggleButtonProps<T> {
 export const ToggleButton = <T,>({ text, onClick, selected, value }: ToggleButtonProps<T>) => {
   return (
     <button
-      className={`toggle-button ${selected ? 'toggle-button-selected' : ''}`}
+      className={`toggle-button ${selected ? 'toggle-button--selected' : ''}`}
       value={String(value)}
       onClick={onClick}
       onTouchEnd={(e) => {
