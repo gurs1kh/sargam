@@ -1,14 +1,9 @@
-:root {
-  --gurmukhi-font-family: "Mukta Mahee Sangeet", serif;
-}
+$gurmukhi-font-family: "Mukta Mahee Sangeet", serif;
 
-body {
+body, #root {
   -webkit-user-select: none;
   user-select: none;
   font-family: 'Helvetica', 'Arial', sans-serif;
-}
-
-body, #root {
   height: 100dvh;
   margin: 0;
 }
@@ -33,26 +28,26 @@ body, #root {
   background-color: #EEEEEE;
   cursor: pointer;
   overflow: hidden;
-}
 
-.current-note-text {
-  font-family: var(--gurmukhi-font-family);
-  font-size: min(50vh, 100vw);
-  width: 100%;
-  text-align: center;
-  background-color: #EEEEEE;
-}
+  .current-note-text {
+    font-family: $gurmukhi-font-family;
+    width: 100%;
+    text-align: center;
+    background-color: #EEEEEE;
+    font-size: min(50vh, 100vw);
 
-.current-note-text-length-2 {
-  font-size: min(50vh, calc(100vw / 2))
-}
+    &.current-note-text--length-2 {
+      font-size: min(50vh, calc(100vw / 2))
+    }
 
-.current-note-text-length-3 {
-  font-size: min(50vh, calc(100vw / 3))
-}
+    &.current-note-text--length-3 {
+      font-size: min(50vh, calc(100vw / 3))
+    }
 
-.current-note-text-length-4 {
-  font-size: min(50vh, calc(100vw / 4));
+    &.current-note-text--length-4 {
+      font-size: min(50vh, calc(100vw / 4));
+    }
+  }
 }
 
 .settings {
@@ -65,7 +60,7 @@ body, #root {
 }
 
 .toggle-button-text {
-  font-family: var(--gurmukhi-font-family);
+  font-family: $gurmukhi-font-family;
   font-size: min(4vh, 5vw);
   white-space: nowrap;
 }
