@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useLocalStorage } from './utils/useLocalStorage'
 import { ToggleButtonGroup, ToggleButton } from './components/ToggleButtonGroup'
+import { PianoDemo } from './components/Piano'
 import './App.scss'
 
 const allNotes = `ਸ̣ ਰ॒̣ ਰ̣ ਗ॒̣ ਗ̣ ਮ̣ ਮ॑​̣ ਪ̣ ਧ॒̣ ਧ̣ ਨ॒̣ ਨ̣
@@ -50,6 +51,7 @@ export const App = () => {
           {currentNotes.slice(0, patternLength).join(' ')}
         </span>
       </div>
+      <PianoDemo />
       <div className="settings">
         <ToggleButtonGroup
           options={patternLengthOptions}
