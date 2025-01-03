@@ -18,10 +18,19 @@ const patternLengthOptions = [
   { value: 3, text: 'ਸ ਰ ਗ' },
   { value: 4, text: 'ਸ ਰ ਗ ਮ' },
 ]
+const patternDistanceOptions = [
+  { value: 2, text: 'ਸ ਗ..' },
+  { value: 4, text: 'ਸ ਪ..' },
+  { value: 6, text: 'ਸ ਨ..' },
+  { value: 8, text: 'ਸ ਰ̇..' },
+  { value: 10, text: 'ਸ ਗ̇..' },
+  { value: 12, text: 'ਸ ਪ̇..' },
+]
 
 export const App = () => {
   const [currentNotes, setCurrentNotes] = useState('ਸ ਰ ਗ ਮ'.split(' '))
   const [patternLength, setPatternLength] = useLocalStorage('patternLength', 1)
+  const [patternDistance, setPatternDistance] = useLocalStorage('patternDistance', 1)
   const [noteRange, setNoteRange] = useLocalStorage('noteRange', rangeOptions[0])
   const [includeAccidentals, setIncludeAccidentals] = useLocalStorage('includeAccidentals', false)
 
@@ -36,10 +45,22 @@ export const App = () => {
   }, [noteRange, includeAccidentals])
 
   const onClick = () => {
-    const allowedNotes =
-      patternLength < 1 ? filteredNotes : filteredNotes.filter((note) => note !== currentNotes[0])
+    const newNotes = [...new Array(patternLength)].reduce((array, _, i) => {
+      if (i == 0)
+        return filteredNotes
+          .slice()
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 1)
 
-    const newNotes = allowedNotes.sort(() => Math.random() - 0.5)
+      const prevNote = array[i - 1]
+      const prevIndex = filteredNotes.indexOf(prevNote)
+      const notesInDistance = filteredNotes
+        .slice(Math.max(prevIndex - patternDistance, 0), prevIndex + patternDistance)
+        .filter((note) => note != prevNote)
+
+      return [...array, notesInDistance.sort(() => Math.random() - 0.5)[0]]
+    }, [])
+
     setCurrentNotes(newNotes)
   }
 
@@ -55,6 +76,11 @@ export const App = () => {
           options={patternLengthOptions}
           selected={patternLength}
           onChange={(value) => setPatternLength(value)}
+        />
+        <ToggleButtonGroup
+          options={patternDistanceOptions}
+          selected={patternDistance}
+          onChange={(value) => setPatternDistance(value)}
         />
         <ToggleButtonGroup
           options={rangeOptions.map((value) => ({ value, text: value }))}
