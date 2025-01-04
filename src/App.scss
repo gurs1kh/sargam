@@ -1,12 +1,11 @@
-$gurmukhi-font-family: "Mukta Mahee Sangeet", serif;
-
 body, #root {
   -webkit-user-select: none;
   user-select: none;
-  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Mukta Mahee Sangeet', 'Arial', sans-serif;
   height: 100dvh;
   margin: 0;
 }
+
 
 .container {
   box-sizing: border-box;
@@ -30,7 +29,6 @@ body, #root {
   overflow: hidden;
 
   .current-note-text {
-    font-family: $gurmukhi-font-family;
     width: 100%;
     text-align: center;
     background-color: #EEEEEE;
@@ -60,7 +58,6 @@ body, #root {
 }
 
 .toggle-button-text {
-  font-family: $gurmukhi-font-family;
   font-size: min(4vh, 5vw);
   white-space: nowrap;
 }

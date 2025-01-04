@@ -1,4 +1,11 @@
 @font-face {
   font-family: "Mukta Mahee Sangeet";
   src: url("fonts/MuktaMaheeSangeet-Regular.ttf");
+  unicode-range:
+    U+0A??, /* gurmukhi */
+    U+0307-0308, /* combining dot(s) above */
+    U+0323-0324, /* combining dot(s) below */
+    U+0951, /* devnagari udatta */
+    U+0952 /* devnagari anudatta */
+  ;
 }
